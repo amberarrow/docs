@@ -31,6 +31,7 @@ pages:
     - Application Packages: application_packages.md
     - Configuration Packages: configuration_packages.md
     - Operators: operator_development.md
+    - Partitioning: partition.md
     - Library Operators:
         - Block Reader: operators/block_reader.md
         - Deduper: operators/deduper.md

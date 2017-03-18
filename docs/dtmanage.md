@@ -56,17 +56,31 @@ This page shows diagnostic information regarding the gateway and console, as wel
 
 In addition, you can perform the following actions from this page:
 
+1. **Restart the Gateway**
 
-#### Restart the Gateway
+    ![](images/dtmanage/console-gateway-restart.png)
 
-![](images/dtmanage/console-gateway-restart.png)
-This can be useful when Hadoop configuration has changed or some other factor of your cluster environment has changed.
+    This can be useful when Hadoop configuration has changed or some other factor of your cluster environment has changed.
 
-#### Toggle Reporting
+2. **System Properties**
 
-![](images/dtmanage/console-reporting.png)
+    ![](images/dtmanage/console-system-props.png)
 
-If enabled, your DataTorrent installation will send various pieces of information such as bug reporting and usage statistics back to our servers.
+    The properties shown in this table are read from the `dt-site.xml` and other configuration files.
+    The red buttons next to certain properties allow you to either modify or delete the property. User-level
+    properties cannot be modified or deleted from the console but all others can be.
+
+2. **Disable AppData Tracker**
+
+    ![](images/dtmanage/app-data-tracker.png)
+
+    As noted above the button, this is a separate application to aggregate metrics; if not using it, you can disable it.
+
+3. **Toggle Reporting**
+
+    ![](images/dtmanage/console-reporting.png)
+
+    If enabled, your DataTorrent installation will send various pieces of information such as bug reporting and usage statistics back to our servers.
 
 ### License Information
 

@@ -10,15 +10,13 @@ This document has a step-by-step guide to configure, customize, and launch this 
 
 ## <a name="steps_to_launch">Steps to launch application</a>
 
-1. Click on the AppHub tab from the top navigation bar.
-   ![AppHub link from top navigation bar](images/common/apphub_link.png)
+1. Click on the AppFactory tab from the top navigation bar. 
+   ![AppHub link from top navigation bar](images/common/apphub_link.png) 
+   Page listing the applications available on AppFactory is displayed.
 
-1. Page listing the applications available on AppHub is displayed.
-Search for Kafka to see all applications related to Kafka.
-   ![AppHub search for Kafka](images/kafka-to-hdfs-sync/apphub-search.png)
-   Click on import button for `Kafka to HDFS Sync App`.
-
-1. Notification is displayed on the top right corner after application package is successfully
+1. Search for Kafka to view all the applications related to Kafka.
+1. Click on import button for `Kafka to HDFS Sync App`. 
+Notification is displayed on the top right corner after application package is successfully
    imported.
    ![App import Notification](images/kafka-to-hdfs-sync/import-notification.png)
 
@@ -85,13 +83,13 @@ End user must specify the values for these properties.
 
 
 ### Advanced properties
-There are pre-saved configurations based on the application environment. Recommended settings for [datatorrent sandbox edition](https://www.datatorrent.com/download/datatorrent-rts-sandbox-edition-download/) are in `sandbox-memory-conf.xml` and for a cluster environment in `cluster-memory-conf.xml`.
+There are pre-saved configurations based on the application environment. Recommended settings for [datatorrent sandbox](https://www.datatorrent.com/download/) are in `sandbox-memory-conf.xml` and for a cluster environment in `cluster-memory-conf.xml`.
 
 |Property|Description|Type|Default for<br/> cluster-<br/>memory<br/>- conf.xml|Default for<br/> sandbox-<br/>memory<br/> -conf.xml|
 |---|---|---|---|---|
 |dt.operator.fileOutput.prop.maxLength|Maximum length for output file after which file is rotated|long|Long.MAX_VALUE|Long.MAX_VALUE|
 
-You can override default values for advanced properties by specifying custom values for these properties in the step [specify custom property](#property-editor) step mentioned in [steps](#steps_to_launch) to launch an application.
+You can override default values for advanced properties by specifying custom values for these properties in the [specify custom property](#property-editor) step within [steps to launch application](#steps_to_launch).
 
 ## Steps to customize the application
 

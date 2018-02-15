@@ -10,17 +10,12 @@ This document has a step-by-step guide to configure, customize, and launch this 
 
 ## <a name="steps_to_launch"></a>Steps to launch application
 
-1. Click on the AppHub tab from the top navigation bar.
+1. Click on the AppFactory tab from the top navigation bar.
    ![AppHub link from top navigation bar](images/common/apphub_link.png)
+   Page listing the applications available on AppFactory is displayed. 
+1. Search for HDFS to see all applications related to HDFS.
+1. Click on import button for `HDFS to HDFS Line Copy App.` Notification is displayed on the top right corner after application package is successfully imported.
 
-1. Page listing the applications available on AppHub is displayed.
-Search for HDFS to see all applications related to HDFS.
-   ![AppHub search for HDFS](images/hdfs-line-copy/apphub-search.png)
-
-   Click on import button for `HDFS to HDFS Line Copy App`
-
-1. Notification is displayed on the top right corner after application package is successfully
-   imported.
    ![App import Notification](images/hdfs-line-copy/import-notification.png)
 
 1. Click on the link in the notification which navigates to the page for this application package.
@@ -81,7 +76,7 @@ End user must specify the values for these properties (all properties are string
 |<p style="font-size:12px">dt.operator.fileOutput.prop.filePath|HDFS path for the output directory. Generally, this refers to path on the hadoop cluster on which app is running.|/user/appuser/output|
 
 ### Advanced properties
-There are pre-saved configurations based on the application environment. Recommended settings for [datatorrent sandbox edition](https://www.datatorrent.com/download/datatorrent-rts-sandbox-edition-download/) are in `sandbox-memory-conf.xml` and for a cluster environment in `cluster-memory-conf.xml`.
+There are pre-saved configurations based on the application environment. Recommended settings for [datatorrent sandbox](https://www.datatorrent.com/download/datatorrent-rts-sandbox-edition-download/) are in `sandbox-memory-conf.xml` and for a cluster environment in `cluster-memory-conf.xml`.
 
 |Property|Description|Type|Default for<br/> cluster<br/>-memory<br/>-conf.xml|Default for<br/>sandbox<br/>-memory<br/>-conf.xml
 |-|-|-|-|-|

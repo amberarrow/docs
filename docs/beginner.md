@@ -154,7 +154,7 @@ multiple options here:
   [here](http://docs.datatorrent.com/sandbox/). This is
   the simplest option for experimenting with Apex since it has all the necessary pieces
   installed.
-+ Download and install the DataTorrent Community or Enterprise Edition downloadable from
++ Download and install the free or licensed version of DataTorrent RTS from
   [here](https://www.datatorrent.com/download/).
 + Use an existing DataTorrent RTS licensed installation.
 + Clone the Apex source code on a cluster with Hadoop already installed, build it and
@@ -671,11 +671,9 @@ FileLineOutputOperator fileOutput = dag.addOperator("FileOutputOperator", new Fi
 dag.addStream("POJO's", jdbcInputOperator.outputPort, fileOutput.input).setLocality(Locality.CONTAINER_LOCAL);
 ```
 
-### Application &mdash; database to database
-[Coming soon]
+### AppFactory
+[AppFactory](https://www.datatorrent.com/apphub/) is a source of application templates. There are many more applications for various use cases to help jump start development effort. 
 
-### Application &mdash; file to database
-[Coming soon]
 
 ## Additional Resources
 

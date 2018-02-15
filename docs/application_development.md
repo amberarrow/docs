@@ -978,10 +978,10 @@ Hadoop.
 
 ### YARN
 
-[YARN](http://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site)is
+[YARN](http://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site) is
 the core library of Hadoop 2.2 that is tasked with resource management
 and works as a distributed application framework. In this section we
-will walk through Yarn's components. In Hadoop 2.2, the old jobTracker
+will walk through YARN's components. In Hadoop 2.2, the old jobTracker
 has been replaced by a combination of ResourceManager (RM) and
 ApplicationMaster (AM).
 
@@ -1640,14 +1640,8 @@ below[.](#h.2nusc19)
 Streams
 --------------------
 
-A stream is a connector
-(edge) abstraction, and is a fundamental building block of the platform.
-A stream consists of tuples that flow from one port (called the
-output port) to one or more ports
-on other operators (called  input ports) another -- so note a potentially
-confusing aspect of this terminology: tuples enter a stream through its
-output port and leave via one or more input ports. A stream has the
-following characteristics
+A stream is a connector (edge) abstraction and a fundamental building block of the platform. A stream consists of data tuples that flow from one port, which can be the output port of an operator, to one or more ports on other operators, which can be the input ports of those operators. Tuples enter a stream through its output port and leave via one or more input ports. 
+A stream has the following characteristics
 
 -   Tuples are always delivered in the same order in which they
     were emitted.
@@ -2827,7 +2821,7 @@ is not yet available.
 
 
 
-9: Dynamic Application Modifications
+Dynamic Application Modifications
 =================================================
 
 Dynamic application modifications are being worked on and most of

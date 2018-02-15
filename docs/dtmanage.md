@@ -1,191 +1,73 @@
 # dtManage Guide
 
-## Introduction
-
-The DataTorrent Console (aka dtManage) is a web-based user interface that allows you to monitor and interact with the DataTorrent platform running on your Hadoop cluster. It is a web-based dashboard that is served by the DataTorrent Gateway, and has five areas: configuration, monitoring, development, and , visualization, and learning.
+The DataTorrent Console (aka dtManage) is a web-based user interface that allows you to monitor and manage the DataTorrent RTS platform and applications running on your Hadoop cluster.
 
 To download the platform or the VM sandbox, go to [http://www.datatorrent.com/download](http://www.datatorrent.com/download).
 
 ![Console Screenshot](images/dtmanage/console-welcome-screen.png)
 
-### Connection Requirements
+The Console includes the following features:
 
-When you install DataTorrent RTS on your Hadoop cluster using the installer binary, the DataTorrent Gateway service is started on the node where the installer is executed. By default, the Gateway serves the console from port 9090. The ability to connect to this node and port depends on your environment, and may require special setup such as an ssh tunnel, firewall configuration changes, VPN access, etc.
+  * [AppFactory](#appfactory)
+  * [Launch](#launch)
+  * [Monitor](#monitor)
+  * [Visualize](dtdashboard)
+  * [Develop](#develop)
+  * [Configure](#configure)
 
-![Architectural Diagram](images/dtmanage/console-gateway-diagram.png)
+## AppFactory
 
-### Browser Requirements
+The AppFactory hosts a collection of applications and templates grouped by various industries, that can be imported or downloaded (as .apa files). You can use the applications as they are, or use the templates as a starting point to develop custom applications.
 
-The Console currently supports Chrome and Safari.
+![](images/dtmanage/console-appfactory.png)
 
-### Installation Wizard
+## Launch
 
-The first time you open the Console, after installing DataTorrent RTS on your cluster, it will take you to the Installation Wizard. This walks you through the initial configuration of your DataTorrent installation, by confirming the following:
+The Launch screen lists all of the imported and uploaded packages and their applications. Applications can be launched and active instances viewed.
 
-* Location of the hadoop executable
-* DFS location where all the DataTorrent files are stored
-* DataTorrent license
-* Summary and review of any remaining configuration items
-
-
-![](images/dtmanage/hadoop-config-screenshot.png)
-
-#### When Kerberos Security is Enabled
-
-When your hadoop cluster has security enabled with Kerberos, there will be four additional controls in the installation wizard: 
-
-- **Kerberos Principal**: The Kerberos principal (e.g. primary/instance@REALM) to use on behalf of the management console.
-- **Kerberos Keytab**: The location (path) of the Kerberos keytab file to use on the gateway node's local file system.
-- **YARN delegation token lifetime**: If the value of the `yarn.resourcemanager.delegation.token.max-lifetime` property in your cluster configuration has been changed from the default, enter it here. Otherwise, leave this blank and the default will be assumed.
-- **Namenode delegation token lifetime**: If the value of the `dfs.namenode.delegation.token.max-lifetime` property in your cluster configuration has been changed from the default, enter it here. Otherwise, leave this blank and the default will be assumed.
-
-
-> **Note:** The token lifetime values you enter will not actually set these values in your hadoop configuration, it is only meant to inform the DataTorrent platform of these values.
-
-## Configure Tab
-
-The configuration page can be found by clicking the “Configure” link in the main navigation bar at the top. There are links to various tools to help you configure and troubleshoot your DataTorrent installation. _The configuration page links may differ depending on your cluster setup. The following is a screenshot with a cluster that has simple authentication/authorization enabled._
-
-![](images/dtmanage/console-config-screen.png)
-
-### System Configuration
-
-This page shows diagnostic information regarding the gateway and console, as well as any issues that the gateway may detect.
-
-![System Configuration Page](images/dtmanage/console-system-screen1.png)
-
-In addition, you can perform the following actions from this page:
-
-
-#### Restart the Gateway
-
-![](images/dtmanage/console-gateway-restart.png)
-This can be useful when Hadoop configuration has changed or some other factor of your cluster environment has changed.
-
-#### Toggle Reporting
-
-![](images/dtmanage/console-reporting.png)
-
-If enabled, your DataTorrent installation will send various pieces of information such as bug reporting and usage statistics back to our servers.
-
-### License Information
-
-Use the License Information page to view how much of your DataTorrent license capacity your cluster is consuming as well as what capabilities your license permits. You can also upload new license files here.
-
-![License Screen](images/dtmanage/console-license.png)
-
-### User Profile
-
-The User Profile page displays information about the current user, including their username, the authentication scheme being used, and the roles that the current user has. In addition, users can perform the following actions:
-
-- change password 
-- change the default home page
-- change the theme of the console
-- restore the default options of the console
-
-![User Profile](images/dtmanage/console-profile.png)
-
-### User Management
-
-Use this page to manage users and roles of your DataTorrent cluster:
-
-*   add users
-*   change users’ roles
-*   change users’ password
-*   delete users
-*   add roles
-*   edit role permissions
-*   delete roles
-
-![User Management Screen](images/dtmanage/console-user-mgmt.png)
-
-> **Note:** With most authentication schemes, the admin role cannot be deleted.
-
-### Installation Wizard
-
-At any time, you can go back to the installation wizard from the Configuration Tab. It can help diagnose issues and reconfigure your cluster and gateway.
-
-## Develop Tab
-
-The development area of dtManage is mainly geared towards the creation, upload, configuration, and launch of DataTorrent applications. The development home can be viewed by clicking the “Develop” tab in the main navigation bar on the top of the screen. A prerequisite to using the development tools of the UI is an understanding of what Apex Application Packages are. For more information, see the [Application Packages Guide](https://www.datatorrent.com/docs/guides/ApplicationDeveloperGuide.html).
-
-![Development Tab](images/dtmanage/console-dev-screen.png)
-
-### Application Packages
-
-To access the application package listing, click on the "Apps" link from the Develop Tab index page. From here, you can perform several operators directly on application packages:
-
-- Download the app package
-- Delete the app package
-- Create a new application in an application package via dtAssemble (requires enterprise license)
-- Launch applications in the app package
-- Import default packages (see below)
-
-![Application Packages](images/dtmanage/console-dev-apps.png)
-
-> **Note:** If authentication is enabled, you may not be able to see others’ app packages, depending on your permissions.
-
-
-
-#### Importing Default Packages
-
-When you install the DataTorrent platform, a folder located in the installation directory called `demos/app-packages` will contain various default app packages that can be imported into HDFS for use. Just above the list of Application Packages, there should be a button that says **Import default packages**. Clicking this will take you to a page that shows the list of these demo app packages. Select one or more to import and click the **Import** button. This will upload the selected app package to HDFS.
-
-![](images/dtmanage/import-default-packages.png)
-
-### Application Package Page
-
-Once you have uploaded or imported an App Package, clicking on the package name in the list will take you to the Application Package Page, where you can view all the package details.
-
-![Application Package Page](images/dtmanage/console-package.png)
-
-Aside from various pieces of meta information (owner, DataTorrent version, required properties, etc), you will see a list of apps found in this package. 
+![Launch](images/dtmanage/console-launch.png)
 
 #### Launching Apps
 
 To launch an app in an App Package, click on the launch button to the far right of the list. A dialog box will appear with several options: 
 
 - **Specify a name for the running app**
-  The console will pre-populate this field with an appropriate name, but you can specify your own name. Just be weary that it must be unique compared to the other applications running on your DataTorrent installation.
+  The console will pre-populate this field with an appropriate name, but you can specify your own name. Make sure it is unique among all the applications running in the Hadoop cluster of your DataTorrent installation.
+- **Specify launch properties**
+  In addition to choosing a config file, you may also directly specify properties in the launch pop-up by selecting this option. Any required properties will automatically show up in this section and require input. Note that there are several helpful functions when specifying custom properties:
+  - *add* - App Packages can have custom properties applied at launch time to override existing properties.
+    - *add default properties* - App Packages can also have default properties. This function will add the default properties to the list, making it easy for you to override the defaults. This button can be found clicking on the *add* button's submenu.
+  If any properties were added, the option to save the properties as a Configuration Package is activated.
+- **Use configuration file**
+  App Package config files are xml files that contain `<properties>` that get interpreted and used for launching an application. To choose one, enable the check box and choose the config file you want to use for launch.
+- **Use configuration package**
+  App Packages with a separate associated Configuration Package can be selected here. The Configuration Package will launch with its own custom properties.
 - **Specify the [scheduler queue](https://hadoop.apache.org/docs/r2.4.1/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)**
   This input allows you to specify which queue you want the application to be launched under. The default behavior depends on your Hadoop installation, but typically will be `root.[USER_NAME]`.
-- **Use a config file when launching**
-  App Package config files are xml files that contain `<properties>` that get interpreted and used for launching an application. To choose one, enable the check box and choose the config file you want to use for launch.
-- **Specify custom properties**
-  In addition to choosing a config file, you may also specify properties directly in the launch popup by selecting this option. Note that there are three helpful functions when specifying custom properties:
-  - *add required properties* - App Packages can have required properties (for example, twitter API access keys for the twitter demo). This function adds a new property with the required property name to the form, making it easy to fill in.
-    - *add default properties* - App Packages can also have default properties. This function will add the default properties to the list, making it easy for you to override the defaults
-    - *save this configuration as…* - This function creates a new config file and saves it to the App Package, which can then be used later to launch the app with. That way, you can relaunch the app with the same properties without having to re-enter them.
+- **Enable [Garbage Collection logging](http://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/index.html)**
+  Checking this box enables GC logging by including the `-Xloggc:<LOG_DIR>/gc.log -verbose:gc -XX:+PrintGCDateStamps` JVM options for all the containers of the application. This GC logging in turn enables garbage collection widgets described later.
 
 ![Launch app modal](images/dtmanage/console-launch-app.png)
 
 > **Note:** For more information about config files and custom properties, see the [Application Packages Guide](https://www.datatorrent.com/docs/guides/ApplicationDeveloperGuide.html)
 
 
-### Viewing an Application DAG
+## Visualize
 
-All DataTorrent applications are made up of operators that connect together via streams to form a Directed Acyclic Graph (DAG). To see a visualization of this DAG, click on the application name in the list of applications.
-
-![DAG View](images/dtmanage/console-dag-view.png)
+See the [dtDashboard](dtdashboard) page.
 
 
-### Creating apps with dtAssemble
+## Monitor
 
-If you have an Enterprise license, you will have access to the dtAssemble tool. Using this tool is outside the scope of this guide, but check out the [dtAssemble guide](http://docs.datatorrent.com/dtassemble/).
+The Monitor section of the Console can be used to monitor, troubleshoot, and manage running application instances.
 
+### Cluster Overview
 
-## Monitor Tab
+The Cluster Overview page shows overall cluster statistics as well as a list of running DataTorrent applications.
 
-The main operations dashboard can be visited by clicking on the “Monitor” link in the main top navigation bar. This section of the Console can be used to monitor, debug, and kill running DataTorrent applications.
+![Cluster Overview Page](images/dtmanage/console-monitor-home.png)
 
-
-### Operations Home
-
-The operations home page shows overall cluster statistics as well as a list of running DataTorrent applications.
-
-![Operations Home Page](images/dtmanage/console-monitor-home.png)
-
-The cluster statistics include some performance statistics and memory usage information. As for the application list, there are two options to take note of: **retrieve ended apps** and **include system apps**. The first option will include all ended applications that are still in the resource manager history. The second option will include system apps, which are apps like the App Data Tracker that are developed by DataTorrent and used to add functionality to your DataTorrent cluster.
+The cluster statistics include some performance statistics and memory usage information. As for the application list, take note of: **ended apps** This includes all the ended applications that are still in the resource manager history.
 
 ### Instance Page
 
@@ -197,7 +79,7 @@ All sections and subsections of the instance page currently use a dashboard/widg
 
 ![widget controls](images/dtmanage/console-widget-ctrls.png)
 
-There are tool tips to help you understand how to work with dashboards and widgets. For most users, the default dashboard configurations (*logical*, *physical*, *physical-dag-view*, *metric-view*) will suffice. The following is a list of widgets available on an app instance page:
+There are tool tips to help you understand how to work with dashboards and widgets. For most users, the default dashboard configurations (*logical*, *physical*, *physical-dag-view*, *metric-view*, *attempts*) will suffice. The following is a list of widgets available on an app instance page:
 
 #### Application Overview Widget
 
@@ -221,7 +103,7 @@ Each application has a stream of notable events that can be viewed with the StrA
 
 ![Stram Events](images/dtmanage/console-events.png)
 
-Some events have additional information attached to it, which can be viewed by clicking the “details” button in the list:
+Some events have additional information attached to it, which can be viewed by clicking the "i" icon in the list:
 
 ![Event Detail Modal](images/dtmanage/console-events-modal.png)
 
@@ -268,6 +150,38 @@ Shows a list of the streams in the application. There are also links to the logi
 
 Shows various metrics of your application on a real-time line chart. Single-click a metric to toggle its visibility. Double-click a metric to toggle all other keys' visibility.
 
+#### Garbage Collection (GC) Chart by Heap
+
+This chart shows a container's heap memory in use in KB (kilo-bytes) against time. The chart is constructed by plotting and extrapolating in-use heap memory obtained from events in the GC log file of a container which requires GC logging to be enabled as described in [Launching apps](#launching-apps). The chart shown is for a single container that is selectable from the radio buttons shown at the top right corner of the widget. Each container in the radio buttons and the chart is color-coded with the same color. The containers included depend on the context of the widget:
+
+- all application containers in the application view
+- all the containers containing the physical partitions of a logical operator in the logical operator view
+- the single parent container of a physical operator in the physical operator view
+- the container itself in the selected container view
+
+![](images/dtmanage/gc-chart-by-heap.png)
+
+#### Garbage Collection (GC) Log Table
+
+This table shows the garbage collection (GC) events for a group of containers. This table too requires GC logging to be enabled as described in [Launching apps](#launching-apps). The containers included in the group depend on the context of the widget:
+
+- all application containers in the application view
+- all the containers containing the physical partitions of a logical operator in the logical operator view
+- the single parent container of a physical operator in the physical operator view
+- the container itself in the selected container view
+
+![](images/dtmanage/gc-log-table.png)
+
+#### Garbage Collection (GC) Chart by Duration
+
+This discrete bar chart shows GC event duration in seconds against time for a group of containers. Each bar is of fixed-width but the height denotes the duration of the corresponding GC event. This chart too requires GC logging to be enabled as described in [Launching apps](#launching-apps). One or more containers are selectable from the radio buttons shown at the top right corner of the widget. Each container in the radio buttons and the chart is color-coded with the same color. The containers included depend on the context of the widget:
+
+- all application containers in the application view
+- all the containers containing the physical partitions of a logical operator in the logical operator view
+- the single parent container of a physical operator in the physical operator view
+- the container itself in the selected container view
+
+![](images/dtmanage/gc-chart-by-duration.png)
 
 ### Recording and Viewing Sample Tuples
 
@@ -275,6 +189,7 @@ There is a mechanism called tuple recording that can be used to easily look at t
 
 ![](images/dtmanage/console-record-tuples.gif)
 
+>**Pro tip:** Select multiple tuples by holding down the shift key.
 
 ### Viewing Logs
 
@@ -282,11 +197,176 @@ Another useful feature of the Console is the ability to view container logs of a
 
 ![](images/dtmanage/console-log-viewing.gif)
 
-Once you are viewing a log file in the console, there are few tricks to traversing it. You can scroll to the top to fetch earlier content, scroll to the bottom for later content, grep for strings in the selected range or over the entire log, and click the “eye” icon to the far left of every line to go to that location of the log:
+Once you are viewing a log file in the console, there are few tricks to traversing it. You can scroll to the top to fetch earlier content, scroll to the bottom for later content, "tail" the log to watch for real-time updates, grep for strings in the selected range or over the entire log, and click the “eye” icon to the far left of every line to go to that location of the log:
 
 ![](images/dtmanage/console-log-viewing-adv.gif)
 
-There are numerous improvements in store for dtManage, and user feedback is highly valued in the planning, so please provide any that will help in your usage of the tool!
 
-~The DataTorrent UI Team
+
+## Develop
+
+Application packages and application configurations can be viewed and managed in the Develop section. For more information about application packages visit the [Application Packages Guide](http://docs.datatorrent.com/application_packages/).
+
+![Development Tab](images/dtmanage/console-dev-screen.png)
+
+### Application Packages
+
+To access the application package listing, click on the "Apps" link from the Develop Tab index page. From here, you can perform several operations directly on application packages:
+
+- Download the app package
+- Delete the app package
+- Create a new application in an application package via dtAssemble (requires enterprise license)
+- Launch applications in the app package
+
+> **Note:** If authentication is enabled, you may not be able to see others’ app packages, depending on your permissions.
+
+### Application Package Page
+
+Once you have uploaded or imported an App Package, clicking on the package name in the list will take you to the Application Package Page, where you can view all the package details.
+
+![Application Package Page](images/dtmanage/console-package.png)
+
+Aside from various pieces of meta information (owner, DataTorrent version, required properties, etc), you will see a list of apps found in this package. 
+
+### Viewing an Application
+
+All DataTorrent applications are made up of operators that connect together via streams to form a Directed Acyclic Graph (DAG). To see a visualization of this DAG, click on the application name in the list of applications. In addition to the DAG, Package Properties and any Required Properties will be listed on this page.
+
+![DAG View](images/dtmanage/console-dag-view.png)
+
+
+### Creating apps with dtAssemble
+
+If you have an Enterprise license, you will have access to the dtAssemble tool. Using this tool is outside the scope of this guide, but check out the [dtAssemble guide](http://docs.datatorrent.com/dtassemble/).
+
+
+
+
+## Configure
+
+The RTS configuration menu is accessed by the cog button on the top-right corner of the Console. Under the **configuration** section, there are links to various tools to help you configure and troubleshoot your DataTorrent installation. The available menu items may differ depending on your security settings.
+
+![](images/dtmanage/console-config-system-screen.png)
+
+### System Configuration
+
+This page shows the system configuration, provides a way to make system changes, and displays any known issues for the DataTorrent RTS installation.
+
+![System Configuration Page](images/dtmanage/console-system-screen1.png)
+
+In addition, you can perform the following actions from this page:
+
+  * SMTP Configuration - Set up SMTP to be able to send out email alerts and notifications.
+  * Restart the Gateway - This button can be used to restart the gateway when the Hadoop configuration or system properties have changed.
+  * Usage Reporting - If enabled, your DataTorrent installation will send various pieces of information such as bug reporting and usage statistics back to our servers.
+  * Installation Wizard - Rerun the initial installation to reconfigure HDFS installation path and Hadoop executable.
+
+### Security Configuration
+
+By default, your installation starts with no security enabled, which may be sufficient on a closed network with a limited set of users. However, it is recommended to use some form of authentication especially for production environments.
+
+![Security Configuration Page](images/dtmanage/security-screen1.png)
+
+DataTorrent RTS supports various authentication methods which can be enabled by following instructions in the [Authentication](dtgateway_security/#authentication) section.
+
+### System Alerts
+
+System alerts can be configured to notify users through the Console and emails based on various system and application metrics.
+
+![System Alerts page](images/dtmanage/system-alerts1.png)
+
+Click on the `+ create new alert` button to create an alert.
+
+![System Alerts page](images/dtmanage/system-alerts2.png)
+
+An alert consists of
+
+ * a condition (a JavaScript expression)
+ * a list of recipient email addresses
+ * a threshold value in milliseconds
+ * a message, and
+ * an enabled/disabled flag
+
+The gateway periodically (every 5 seconds) processes all enabled alerts by evaluating the condition. If the condition evaluates to `true`, the alert is said to be "in effect".
+If the condition evaluates to `false`, the alert is said to be "out" (or "out of effect"). If the alert stays "in effect" for the duration specified as the threshold value,
+then the alert is triggered and the gateway sends an "in effect" email message to all the recipient email addresses.
+
+If a triggered alert goes "out of effect" then the gateway immediately sends an "out of effect" email message to all the recipient email addresses.
+
+The alert condition is specified as a JavaScript expression which is evaluated in the context of something called `topics` which are described [here](dtgateway_systemalerts/#alerts-and-topics).
+
+The gateway also provides pre-defined alert "templates" that allow a user to create alerts for certain common conditions without having to write JavaScript expressions.
+
+![System Alerts page](images/dtmanage/system-alerts3.png)
+
+Click on the "Predefined Conditions" tab and select a template from the drop-down list. Depending on your selection, you will need to provide more values to be filled into the template.
+As an example, for the "Application Memory Usage" template you need to provide the Application Name and Memory values as shown below:
+
+![System Alerts page](images/dtmanage/system-alerts4.png)
+
+You can click on the "Javascript Code" tab to see the generated JavaScript expression that corresponds to your alert template selection and provided values as shown below:
+
+![System Alerts page](images/dtmanage/system-alerts5.png)
+
+You can generate a test email to validate your alert by checking the "Send Test Email" check-box and clicking on the blue "Test" button. The test email is sent regardless of the true or false result
+of the JavaScript condition, if the evaluation has no errors provided SMTP is configured as described in the Alerts section.
+
+### License Information
+
+Use the License Information page to view how much of your DataTorrent license capacity your cluster is consuming as well as what capabilities your license permits. You can also upload new license files here.
+
+![License Screen](images/dtmanage/console-license.png)
+
+### User Profile
+
+The User Profile page displays information about the current user, including their username, the authentication scheme being used, and the roles that the current user has. In addition, users can perform the following actions:
+
+- Change password 
+- Change the default home page
+- Change the theme of the console
+- Restore the default options of the console
+
+![User Profile](images/dtmanage/console-profile.png)
+
+### User Management
+
+Use this page to manage users and roles of your DataTorrent cluster:
+
+*   Add users
+*   Change users’ roles
+*   Change users’ password
+*   Delete users
+*   Add roles
+*   Edit role permissions
+*   Delete roles
+
+![User Management Screen](images/dtmanage/console-user-mgmt.png)
+
+> **Note:** With most authentication schemes, the admin role cannot be deleted.
+
+### Installation Wizard
+
+The first time you open the Console, after installing DataTorrent RTS on your cluster, it will take you to the Installation Wizard. This walks you through the initial configuration of your DataTorrent installation, by confirming the following:
+
+* Location of the Hadoop executable
+* DFS location where all the DataTorrent files are stored
+* DataTorrent license
+* Summary and review of any remaining configuration items
+
+At any time, you can go back to the installation wizard from the Configuration Tab. It can help diagnose issues and reconfigure your cluster and gateway.
+
+![](images/dtmanage/hadoop-config-screenshot.png)
+
+When your Hadoop cluster has security enabled with Kerberos, there will be four additional controls in the installation wizard: 
+
+- **Kerberos Principal**: The Kerberos principal (e.g. primary/instance@REALM) to use on behalf of the management console.
+- **Kerberos Keytab**: The location (path) of the Kerberos keytab file to use on the gateway node's local file system.
+- **YARN delegation token lifetime**: If the value of the `yarn.resourcemanager.delegation.token.max-lifetime` property in your cluster configuration has been changed from the default, enter it here. Otherwise, leave this blank and the default will be assumed.
+- **Namenode delegation token lifetime**: If the value of the `dfs.namenode.delegation.token.max-lifetime` property in your cluster configuration has been changed from the default, enter it here. Otherwise, leave this blank and the default will be assumed.
+
+
+> **Note:** The token lifetime values you enter will not actually set these values in your hadoop configuration, it is only meant to inform the DataTorrent platform of these values.
+
+
+
 

@@ -13,17 +13,15 @@ This document has a step-by-step guide to configure, customize, and launch this 
 
 ## <a name="steps_to_launch">Steps to launch application</a>
 
-1. Click on the AppHub tab from the top navigation bar.
-   ![AppHub link from top navigation bar](images/common/apphub_link.png)
-
-1. Page listing the applications available on AppHub is displayed.
-Search for Database to see all applications related to Database.
-   ![AppHub search for Database](images/database-to-hdfs/apphub-search.png)
-
-    Click on import button for `Database dump to HDFS Sync App`
-
-1. Notification is displayed on the top right corner after application package is successfully imported.
+1. Click on the AppFactory tab from the top navigation bar.
+   ![AppHub link from top navigation bar](images/common/apphub_link.png). Page listing the applications available on AppFactory is displayed.
+1. Search for Database to see all applications related to Database.
+1. Click on import button for `Database dump to HDFS Sync App.`
+Notification is displayed on the top right corner after application package is successfully imported.
+   
    ![App import Notification](images/database-to-hdfs/import-notification.png)
+   
+   
 
 1. Click on the link in the notification which navigates to the page for this application package.
    ![App details page](images/database-to-hdfs/app-details-page.png)
@@ -97,7 +95,7 @@ End user must specify the values for these properties.
 |dt.operator.fileOutput.prop.outputFileName|Output file name |String|output.txt|
 
 ### Advanced properties
-There are pre-saved configurations based on the application environment. Recommended settings for [datatorrent sandbox edition](https://www.datatorrent.com/download/datatorrent-rts-sandbox-edition-download/) are in `sandbox-memory-conf.xml` and for a cluster environment in `cluster-memory-conf.xml` (the first 2 are integers and the rest are strings).
+There are pre-saved configurations based on the application environment. Recommended settings for [datatorrent sandbox](https://www.datatorrent.com/download/datatorrent-rts-sandbox-edition-download/) are in `sandbox-memory-conf.xml` and for a cluster environment in `cluster-memory-conf.xml` (the first 2 are integers and the rest are strings).
 The messages or records emitted are specified by the value of the `TUPLE_CLASS` attribute in the configuration file namely `PojoEvent` in this case.
 
 |Property|Description|Default for<br/> cluster<br/>-memory<br/>- conf.xml|Default for<br/>  sandbox<br/>-memory<br/> -conf.xml|

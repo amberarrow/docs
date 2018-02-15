@@ -2,7 +2,7 @@
 
 ## Summary
 Ingest filtered messages from kafka to hadoop HDFS for continuous ingestion to hadoop.
-The source code is available at: [https://github.com/DataTorrent/app-templates/tree/master/kafka-to-hdfs-sync.](https://github.com/DataTorrent/app-templates/tree/master/kafka-to-hdfs-filter)
+The source code is available at: [https://github.com/DataTorrent/app-templates/tree/master/kafka-to-hdfs-filter](https://github.com/DataTorrent/app-templates/tree/master/kafka-to-hdfs-filter)
 
 Please send feedback or feature requests to: [feedback@datatorrent.com](mailto:feedback@datatorrent.com)
 
@@ -10,15 +10,12 @@ This document has a step-by-step guide to configure, customize, and launch this 
 
 ## <a name="steps_to_launch">Steps to launch application</a>
 
-1. Click on the AppHub tab from the top navigation bar.
+1. Click on the AppFactory tab from the top navigation bar.
    ![AppHub link from top navigation bar](images/common/apphub_link.png)
-
-1. Page listing the applications available on AppHub is displayed.
-Search for Kafka to see all applications related to Kafka.
-   ![AppHub search for Kafka](images/kafka-to-hdfs-filter/apphub-search.png)
-   Click on import button for `Kafka to HDFS Filter App`.
-
-1. Notification is displayed on the top right corner after application package is successfully
+   Page listing the applications available on AppFactory is displayed.
+1. Search for Kafka to see all applications related to Kafka.
+1. Click on import button for `Kafka to HDFS Filter App`.
+Notification is displayed on the top right corner after application package is successfully
    imported.
    ![App import Notification](images/kafka-to-hdfs-filter/import-notification.png)
 
@@ -90,7 +87,7 @@ End user must specify the values for these properties.
 
 
 ### Advanced properties
-There are pre-saved configurations based on the application environment. Recommended settings for [datatorrent sandbox edition](https://www.datatorrent.com/download/datatorrent-rts-sandbox-edition-download/) are in `sandbox-memory-conf.xml` and for a cluster environment in `cluster-memory-conf.xml`.
+There are pre-saved configurations based on the application environment. Recommended settings for [datatorrent sandbox](https://www.datatorrent.com/download/datatorrent-rts-sandbox-edition-download/) are in `sandbox-memory-conf.xml` and for a cluster environment in `cluster-memory-conf.xml`.
 The messages or records emitted are specified by the value of the `TUPLE_CLASS` attribute in the configuration file namely `PojoEvent` in this case.
 
 |Property|Description|Type|Default for<br/> cluster-<br/>memory<br/>- conf.xml|Default for<br/> sandbox-<br/>memory<br/> -conf.xml|
